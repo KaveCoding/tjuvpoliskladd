@@ -6,102 +6,105 @@ namespace tjuvpoliskladd
     {
         static void Main(string[] args)
         {
-                List<Medborgare> medborgarlista = new List<Medborgare>();
-                List<Polis> polislista = new List<Polis>();
-                List<Tjuv> tjuvlista= new List<Tjuv>();
-
-
-            for (int i = 0; i < 10; i++)
+            List<Person> personlista = new List<Person>();
+            
+            for (int i = 0; i < 30; i++)
             {
-                medborgarlista.Add(generera_medborgare());
-                polislista.Add(generera_poliser());
-                tjuvlista.Add(generera_tjuvar());
+                personlista.Add(generera_personer());
             }
-                foreach (Medborgare medborgare in medborgarlista)
+            
+            static Person generera_personer()
             {
-                Console.WriteLine(medborgare.X_värde + " " + medborgare.Y_värde);
-            }
-                foreach (Polis polis in polislista)
-            {
-                Console.WriteLine(polis.X_värde + " " + polis.Y_värde);
-            }
-                foreach (Tjuv tjuv in tjuvlista)
-            {
-                Console.WriteLine(tjuv.X_värde + " " + tjuv.Y_värde);
-            }
-
-            static Medborgare generera_medborgare()
-            {
-                Medborgare nyMedborgare = new Medborgare();
-                return nyMedborgare;
-            }
-
-            static Polis generera_poliser()
+                Random random = new Random();
+                int randomnumber = random.Next(1, 4);
+                switch (randomnumber)
                 {
-                Polis nyPolis = new Polis();
-                return nyPolis;
+                    case 1:
+                        Polis nyPolis = new Polis();
+                        ;
+                        return nyPolis;
+
+                    case 2:
+                        {
+                            Tjuv nyTjuv = new Tjuv();
+                            return nyTjuv;
+
+                        }
+                    case 3:
+                        {
+                            Medborgare nyMedborgare = new Medborgare();
+                            return nyMedborgare;
+                        }
+                    default:
+                        return null;
+                        break;
+                }
+            }
+
+            while (true)
+            {
+                string[,] drawing = new string[25, 100];
+                for (int i = 0; i < personlista.Count; i++)
+                {
+                    Console.Clear();
+                    Helpers.Draw(drawing, personlista[i].koordinater[0], personlista[i].koordinater[1], personlista[i].markör);
+                    Random random = new Random();
+                    int randomnumber = random.Next(1, 9);
+                    
+                    switch (randomnumber)
+                    {
+                        case 1:
+                            personlista[i].koordinater[0]--;
+                            break; //812   Riktningarna
+                                   //703
+                                   //654
+                        case 2:
+                            {
+                                personlista[i].koordinater[1]++;
+                                personlista[i].koordinater[0]--;
+                                break;
+                            }
+                        case 3:
+                            {
+                                personlista[i].koordinater[1]++;
+                                break;
+                            }
+                        case 4:
+                            {
+                                personlista[i].koordinater[1]++;
+                                personlista[i].koordinater[0]++;
+                                break;
+                            }
+                        case 5:
+                            {
+                                personlista[i].koordinater[0]++;
+                            }
+                            break;
+                        case 6:
+                            {
+                                personlista[i].koordinater[1]--;
+                                personlista[i].koordinater[0]++;
+                            }
+                            break;
+                        case 7:
+                            {
+                                personlista[i].koordinater[1]--;
+                            }
+                            break;
+                        case 8:
+                            {
+                                personlista[i].koordinater[1]--;
+                                personlista[i].koordinater[0]--;
+                            }
+                            break;
+                    }
+                    
+
                 }
 
-            static Tjuv generera_tjuvar()
-            {
-                Tjuv nyTjuv= new Tjuv();
-                return nyTjuv;
+                Console.ReadKey();
             }
-
-            //while (true)
-            //{
-            //    Console.Clear();
-            //    Helpers.Draw(drawing, y_värde, x_värde);
-            //    Console.ReadKey();
-
-            //    int randomnumber =  random.Next(1,9);
-            //    switch (randomnumber)
-            //    {
-            //        case 1: y_värde--; 
-            //            break; //812   Riktningarna
-            //                   //703
-            //                   //654
-            //        case 2:
-            //            {
-            //                x_värde++; 
-            //                y_värde--;
-            //                break;
-            //            }
-            //        case 3:
-            //            {
-            //                x_värde++;
-            //                break;
-            //            }
-            //        case 4:
-            //            {
-            //                x_värde++;
-            //                y_värde++;
-            //                break;
-            //            }
-            //        case 5:
-            //            {
-            //                y_värde++;
-            //            }
-            //            break;
-            //        case 6:
-            //            {
-            //                x_värde--;
-            //                y_värde++;
-            //            }
-            //            break;
-            //        case 7:
-            //            {
-            //                x_värde--;
-            //            }
-            //            break;
-            //        case 8:
-            //            {
-            //                x_värde--;
-            //                y_värde--;
-            //            }
-            //            break;
-            //    }
-            //}
-        }
         }
     }
+}
+        

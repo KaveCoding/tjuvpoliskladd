@@ -8,46 +8,48 @@ namespace tjuvpoliskladd
 {
     internal class Helpers
     {
-     
-
-        
-        internal static void Draw(string[,] drawing, int y_värde, int x_värde)
+        internal static void Draw(string[,] drawing, int y_värde, int x_värde, string markör)
         {
-            string frame = "#";
+            //string frame = "#";
 
-            for (int top = 0; top < drawing.GetLength(1) + 2; top++)
+            //for (int top = 0; top < drawing.GetLength(1) + 2; top++)
+            //{
+            //    Console.Write(frame);
+            //}
+            //Console.WriteLine();
+
+            for (int row = 0; row < 25; row++)
             {
-                Console.Write(frame);
-            }
-            Console.WriteLine();
-
-
-            for (int row = 0; row < drawing.GetLength(0); row++)
-            {
-                Console.Write(frame);
-                for (int col = 0; col < drawing.GetLength(1); col++)
+                for (int col = 0; col < 100; col++)
                 {
                     if (row == y_värde && col == x_värde)
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write(drawing[row, col] == null ? "P" : drawing[row, col]);
-                        Console.ForegroundColor = ConsoleColor.White;
+                        drawing[row, col] = markör;
+                    }   
+                }
+            }
+                for (int row = 0; row < 25; row++)
+                {
+                    for (int col = 0; col < 100; col++)
+                {
+                    if (drawing[row, col] == null)
+                    {
+                        Console.Write(" ");
                     }
                     else
-                    {
-                        Console.Write(drawing[row, col] == null ? " " : drawing[row, col]);
-                    }
-
+                    Console.Write(drawing[row, col]);
                 }
-                Console.Write(frame);
-                Console.WriteLine();
-            }
-
-            for (int bottom = 0; bottom < drawing.GetLength(1) + 2; bottom++)
-            {
-                Console.Write(frame);
-            }
-            Console.WriteLine();
+                    Console.WriteLine();
+                }
+            //for (int bottom = 0; bottom < drawing.GetLength(1) + 2; bottom++)
+            //{
+            //    Console.Write(frame);
+            //}
+            //Console.WriteLine();
         }
     }
 }
+                
+                
+                
+    

@@ -1,52 +1,59 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace tjuvpoliskladd
 {
-    public class Person
+    internal class Person
     {
-    
+        public int[] koordinater = new int[2];
+        public List<string> inventory = new List<string>();
+        public string markör = "";
+
+        public Person()
+        {
+            Random random = new Random();
+            koordinater = new int[2];
+            koordinater[0] = random.Next(0, 26); //y värde
+            koordinater[1] = random.Next(0, 100); //x värde
+            markör = "";
+
+        }
+
     }
 
     internal class Medborgare : Person
     {
-        static Random random = new Random();
-        public int X_värde = random.Next(0, 101);
-        public int Y_värde = random.Next(0, 26);
-        public List<string> tillhörigheter = new List<string>();
         public Medborgare()
         {
-            tillhörigheter.Add("Nycklar");
-            tillhörigheter.Add("Mobil");
-            tillhörigheter.Add("Plånbok");
-            tillhörigheter.Add("klocka");
-        }
+            inventory.Add("Nycklar");
+            inventory.Add("Mobil");
+            inventory.Add("Plånbok");
+            inventory.Add("klocka");
+            markör = "M";
+            
+
+    }
     }
 
     internal class Polis : Person
     {
-        static Random random = new Random();
-        public int X_värde = random.Next(0, 101);
-        public int Y_värde = random.Next(0, 26);
-        public List<string> stulet_gods = new List<string>();
+
         public Polis()
         {
-            stulet_gods.Add(" tomt "); //placeholder
+            markör = "P";
         }
     }
+
         internal class Tjuv : Person
         {
-            static Random random = new Random();
-            public int X_värde = random.Next(0, 101);
-            public int Y_värde = random.Next(0, 26);
-            public List<string> beslagtaget = new List<string>();
             public Tjuv()
             {
-                beslagtaget.Add(" tomt "); //placeholder
-            }
+            markör = "T";
+        }
         }
     }
 
