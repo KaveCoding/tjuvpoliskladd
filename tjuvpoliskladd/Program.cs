@@ -8,7 +8,7 @@ namespace tjuvpoliskladd
         static void Main(string[] args)
         {
             List<Person> personlista = new List<Person>();
-            personlista = Helpers.Generate(personlista, 2);
+            personlista = Helpers.Generate(personlista, 30, 30, 1);
             while (true)
             {
                 string[,] drawing = new string[25, 100];
@@ -17,7 +17,6 @@ namespace tjuvpoliskladd
                     Console.Clear();
                     Helpers.Draw(drawing, personlista[i].koordinater[0], personlista[i].koordinater[1], personlista[i].markör);
                     
-                   
                     switch (personlista[i].riktning)
                     {
                         case 1:
@@ -77,8 +76,34 @@ namespace tjuvpoliskladd
 
                         if (personlista[i].koordinater[1] < 0)
                             personlista[i].koordinater[1] = 99;
-                }
 
+
+                    for (int j = 0; j < personlista.Count; j++)
+
+                        if (personlista[i].koordinater[0] == personlista[j].koordinater[0] && personlista[i].koordinater[1] == personlista[j].koordinater[1])
+                        {
+                            if (personlista[i] is Tjuv && personlista[j] is Medborgare)
+                            {
+                                personlista[i].inventory.Add(personlista[j].inventory[0]); //Tjuv
+                                personlista[j].inventory.Remove(personlista[j].inventory[0]); //Medborgare
+                                Helpers.theft(i, j);
+                            }
+                            if (personlista[i] is Medborgare && personlista[j] is Tjuv)
+                            {
+                                personlista[j].inventory.Add(personlista[i].inventory[0]); //Tjuv
+                                personlista[i].inventory.Remove(personlista[i].inventory[0]); //Medborgare
+                                Helpers.theft(j, i);
+                            }
+
+                            if (personlista[i] is Polis && personlista[j] is Tjuv)
+                            {
+                                if (personlista[j].inventory != null)
+                                {
+                                    //gå till fängelse
+                                }
+                            }
+                        }
+                }
                 Console.ReadKey();
             }
         }
