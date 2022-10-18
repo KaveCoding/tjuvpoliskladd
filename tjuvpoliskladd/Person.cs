@@ -17,8 +17,8 @@ namespace tjuvpoliskladd
         {
             Random random = new Random();
             koordinater = new int[2];
-            koordinater[0] = random.Next(0, 25); //y värde
-            koordinater[1] = random.Next(0, 100); //x värde
+            koordinater[0] = random.Next(0,25); //y värde
+            koordinater[1] = random.Next(0,100); //x värde
             markör = "";
 
         }

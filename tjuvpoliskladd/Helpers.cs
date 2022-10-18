@@ -15,10 +15,16 @@ namespace tjuvpoliskladd
             {
                 for (int col = 0; col < 100; col++)
                 {
-
+                    
                     if (row == y_värde && col == x_värde)
                     {
-                        drawing[row, col] = markör;
+                        if (drawing[row, col] != " ")
+                            drawing[row, col] = drawing[row, col] + markör;
+                        
+
+                        else
+                            drawing[row, col] = markör;
+
                     }   
                 }
             }
