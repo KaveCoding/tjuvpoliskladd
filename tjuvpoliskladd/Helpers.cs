@@ -34,7 +34,7 @@ namespace tjuvpoliskladd
                 {
                     if (drawing[row, col] == null)
                     {
-                        Console.Write(" ");
+                        drawing[row,col] = " ";
                     }
                     else
                     Console.Write(drawing[row, col]);
