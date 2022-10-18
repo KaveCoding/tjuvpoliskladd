@@ -8,6 +8,16 @@ namespace tjuvpoliskladd
 {
     internal class Helpers
     {
+        public static List<Person> Generate(List<Person> persons, int antal)
+        {
+            for (int i = 0; i < antal; i++)
+            {
+                persons.Add(new Tjuv());
+                persons.Add(new Polis());
+                persons.Add(new Medborgare());
+            }
+            return persons;
+        }
         internal static void Draw(string[,] drawing, int y_värde, int x_värde, string markör)
         {
            

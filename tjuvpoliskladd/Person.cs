@@ -12,6 +12,7 @@ namespace tjuvpoliskladd
         public int[] koordinater = new int[2];
         public List<string> inventory = new List<string>();
         public string markör = "";
+        public int riktning = 0;
 
         public Person()
         {
@@ -19,6 +20,7 @@ namespace tjuvpoliskladd
             koordinater = new int[2];
             koordinater[0] = random.Next(0,25); //y värde
             koordinater[1] = random.Next(0,100); //x värde
+            riktning = random.Next(0, 9); //x värde
             markör = "";
 
         }
@@ -34,8 +36,6 @@ namespace tjuvpoliskladd
             inventory.Add("Plånbok");
             inventory.Add("klocka");
             markör = "M";
-            
-
     }
     }
 
@@ -45,6 +45,7 @@ namespace tjuvpoliskladd
         public Polis()
         {
             markör = "P";
+           
         }
     }
 

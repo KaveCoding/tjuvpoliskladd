@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace tjuvpoliskladd
 {
@@ -7,41 +8,7 @@ namespace tjuvpoliskladd
         static void Main(string[] args)
         {
             List<Person> personlista = new List<Person>();
-            
-            for (int i = 0; i < 5; i++)
-            {
-                personlista.Add(generera_personer());
-            }
-            
-            static Person generera_personer()
-            {
-                Random random = new Random();
-                int randomnumber = random.Next(1, 4);
-                switch (randomnumber)
-                {
-                    case 1:
-                        Polis nyPolis = new Polis();
-                        ;
-                        return nyPolis;
-
-                    case 2:
-                        {
-                            Tjuv nyTjuv = new Tjuv();
-                            return nyTjuv;
-
-                        }
-                    case 3:
-                        {
-                            Medborgare nyMedborgare = new Medborgare();
-                            return nyMedborgare;
-                        }
-                    default:
-                        return null;
-                        break;
-                }
-            }
-            Random random = new Random();
-            int randomnumber = random.Next(1, 9);
+            personlista = Helpers.Generate(personlista, 2);
             while (true)
             {
                 string[,] drawing = new string[25, 100];
@@ -51,7 +18,7 @@ namespace tjuvpoliskladd
                     Helpers.Draw(drawing, personlista[i].koordinater[0], personlista[i].koordinater[1], personlista[i].markör);
                     
                    
-                    switch (randomnumber)
+                    switch (personlista[i].riktning)
                     {
                         case 1:
                             personlista[i].koordinater[0]--;
