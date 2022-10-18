@@ -10,18 +10,12 @@ namespace tjuvpoliskladd
     {
         internal static void Draw(string[,] drawing, int y_värde, int x_värde, string markör)
         {
-            //string frame = "#";
-
-            //for (int top = 0; top < drawing.GetLength(1) + 2; top++)
-            //{
-            //    Console.Write(frame);
-            //}
-            //Console.WriteLine();
-
+           
             for (int row = 0; row < 25; row++)
             {
                 for (int col = 0; col < 100; col++)
                 {
+
                     if (row == y_värde && col == x_värde)
                     {
                         drawing[row, col] = markör;
@@ -41,11 +35,7 @@ namespace tjuvpoliskladd
                 }
                     Console.WriteLine();
                 }
-            //for (int bottom = 0; bottom < drawing.GetLength(1) + 2; bottom++)
-            //{
-            //    Console.Write(frame);
-            //}
-            //Console.WriteLine();
+           
         }
     }
 }

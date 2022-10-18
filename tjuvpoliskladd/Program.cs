@@ -8,7 +8,7 @@ namespace tjuvpoliskladd
         {
             List<Person> personlista = new List<Person>();
             
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < 5; i++)
             {
                 personlista.Add(generera_personer());
             }
@@ -40,7 +40,8 @@ namespace tjuvpoliskladd
                         break;
                 }
             }
-
+            Random random = new Random();
+            int randomnumber = random.Next(1, 9);
             while (true)
             {
                 string[,] drawing = new string[25, 100];
@@ -48,9 +49,8 @@ namespace tjuvpoliskladd
                 {
                     Console.Clear();
                     Helpers.Draw(drawing, personlista[i].koordinater[0], personlista[i].koordinater[1], personlista[i].markör);
-                    Random random = new Random();
-                    int randomnumber = random.Next(1, 9);
                     
+                   
                     switch (randomnumber)
                     {
                         case 1:
@@ -98,8 +98,18 @@ namespace tjuvpoliskladd
                             }
                             break;
                     }
-                    
 
+                        if (personlista[i].koordinater[0] > 24)
+                            personlista[i].koordinater[0] = 0;
+
+                        if (personlista[i].koordinater[0] < 0)
+                            personlista[i].koordinater[0] = 25;
+
+                        if (personlista[i].koordinater[1] > 99)
+                            personlista[i].koordinater[1] = 0;
+
+                        if (personlista[i].koordinater[1] < 0)
+                            personlista[i].koordinater[1] = 99;
                 }
 
                 Console.ReadKey();
