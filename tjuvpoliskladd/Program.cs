@@ -11,6 +11,7 @@ namespace tjuvpoliskladd
             personlista = Helpers.Generate(personlista, 30, 30, 1);
             while (true)
             {
+                string[,] jail = new string[25, 25];
                 string[,] drawing = new string[25, 100];
                 for (int i = 0; i < personlista.Count; i++)
                 {
@@ -63,6 +64,10 @@ namespace tjuvpoliskladd
                                 personlista[i].koordinater[0]--;
                             }
                             break;
+                        case 9:
+                            {
+                                break;
+                            }
                     }
 
                         if (personlista[i].koordinater[0] > 24)
@@ -99,7 +104,7 @@ namespace tjuvpoliskladd
                             {
                                 if (personlista[j].inventory != null)
                                 {
-                                    //gå till fängelse
+                                    personlista[j].inJail = true;
                                 }
                             }
                         }

@@ -13,14 +13,14 @@ namespace tjuvpoliskladd
         public List<string> inventory = new List<string>();
         public string markör = "";
         public int riktning = 0;
-
+        public bool inJail = false;
         public Person()
         {
             Random random = new Random();
             koordinater = new int[2];
             koordinater[0] = random.Next(0,25); //y värde
             koordinater[1] = random.Next(0,100); //x värde
-            riktning = random.Next(0, 9); 
+            riktning = random.Next(0, 10); 
             markör = "";
         }
     }
